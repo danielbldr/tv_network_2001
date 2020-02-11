@@ -27,4 +27,18 @@ class Network
     end
     shows
   end
+
+  def shows_by_actor
+    actors = {}
+    @shows.each do |show|
+      show.characters.each do |character|
+        if actors.has_key?(character.actor)
+          actors[character.actor] << [show]
+        else
+          actors[character.actor] = [show]
+        end
+      end
+    end
+    actors
+  end
 end
